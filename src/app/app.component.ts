@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './models/product';
-import { ProductsService } from './sevices/products.service';
+import { ProductsService } from './services/products.service';
 import { Observable, tap } from 'rxjs';
+import { ModalService } from './services/modal.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,14 @@ import { Observable, tap } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'angular test';
-  //products: Product[]
   loading = false
   products$: Observable<Product[]>
   term: ''
 
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    public modalService: ModalService
+  ) {}
 
   ngOnInit(): void {
     this.loading = true
@@ -23,12 +26,4 @@ export class AppComponent implements OnInit {
       tap(() => this.loading = false)
     )
   }
-
-/*  ngOnInit(): void {
-    this.loading = true
-    this.productsService.getAll().subscribe((products) => {
-      this.products = products
-      this.loading = false
-    })
-  }*/
 }
