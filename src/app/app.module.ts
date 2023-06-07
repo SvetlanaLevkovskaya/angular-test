@@ -15,8 +15,6 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavigationComponent } from './components/navigation/navigation.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,16 +26,10 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     FocusDirective,
     ProductPageComponent,
     AboutPageComponent,
-    NavigationComponent
+    NavigationComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-  ],
+  imports: [BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

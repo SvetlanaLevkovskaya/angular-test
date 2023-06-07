@@ -6,7 +6,7 @@ import { Product } from '../../models/product';
   templateUrl: './product.component.html',
 })
 export class ProductComponent {
-  @Input() product: Product
+  @Input() product: Product;
 
-  details = false
+  details = false;
 }

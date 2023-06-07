@@ -5,16 +5,13 @@
     placeholder="Product name"
     formControlName="title"
     appFocus
-  >
+  />
   <p
     class="text-red-500 font-medium mb-2"
     *ngIf="title.invalid && title.errors?.minlength && title.touched"
-  >Please fill field with a minimum length of 6 characters. Now {{title.value.length}}</p>
+  >
+    Please fill field with a minimum length of 6 characters. Now {{ title.value.length }}
+  </p>
 
-
-  <button
-    type="submit"
-    class="py-2 px-4 bg-blue-600 text-white"
-  >Create
-  </button>
+  <button type="submit" class="py-2 px-4 bg-blue-600 text-white">Create</button>
 </form>

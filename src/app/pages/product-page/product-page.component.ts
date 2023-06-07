@@ -12,16 +12,12 @@ export class ProductPageComponent implements OnInit {
   loading = false;
   term: '';
 
-  constructor(
-    public productsService: ProductsService,
-    public modalService: ModalService
-  ) {}
+  constructor(public productsService: ProductsService, public modalService: ModalService) {}
 
   ngOnInit(): void {
-    this.loading = true
+    this.loading = true;
     this.productsService.getAll().subscribe(() => {
-      this.loading = false
-    })
-
+      this.loading = false;
+    });
   }
 }

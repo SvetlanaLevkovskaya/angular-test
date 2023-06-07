@@ -7,38 +7,34 @@ import { ErrorService } from './error.service';
 @Injectable({
   providedIn: 'root',
 })
-
 export class ProductsService {
-  products: Product[] = []
+  products: Product[] = [];
 
-  constructor(
-    private http: HttpClient,
-    private errorService: ErrorService,
-  ) {}
+  constructor(private http: HttpClient, private errorService: ErrorService) {}
 
   getAll(): Observable<Product[]> {
-    return this.http.get<Product[]>('https://fakestoreapi.com/products', {
-      params: new HttpParams({
-        fromObject: { limit: 6 },
-      }),
-    }).pipe(
-      delay(200),
-      retry(2),
-      tap(products => this.products = products),
-      catchError(this.errorHandler.bind(this)),
-    )
+    return this.http
+      .get<Product[]>('https://fakestoreapi.com/products', {
+        params: new HttpParams({
+          fromObject: { limit: 6 },
+        }),
+      })
+      .pipe(
+        delay(200),
+        retry(2),
+        tap((products) => (this.products = products)),
+        catchError(this.errorHandler.bind(this))
+      );
   }
 
   create(product: Product): Observable<Product> {
-    return this.http.post<Product>('https://fakestoreapi.com/products', product)
-               .pipe(
-                 tap(prod => this.products.unshift(prod)),
-               )
+    return this.http
+      .post<Product>('https://fakestoreapi.com/products', product)
+      .pipe(tap((prod) => this.products.unshift(prod)));
   }
 
   private errorHandler(err: any) {
-    this.errorService.handle(err.message)
-    return throwError(() => err.message)
-
+    this.errorService.handle(err.message);
+    return throwError(() => err.message);
   }
 }
