@@ -8,7 +8,7 @@ import { ModalService } from "../../services/modal.service";
   styleUrls: ["./product-page.component.css"],
 })
 export class ProductPageComponent implements OnInit {
-  title = "angular test";
+  title = "angular";
   loading = false;
   term: "";
 
